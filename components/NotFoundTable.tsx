@@ -1,6 +1,6 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import { jsx } from "@emotion/react";
+import { css, jsx } from "@emotion/react";
 import { Table, HeaderRow, TableHeader, Row, Cell } from "@leafygreen-ui/table";
 import PackageLink from "components/PackageLink";
 import { TableBadge } from "components/Badge";
@@ -24,6 +24,9 @@ function NotFoundTable({ data }: { data: Array<NotFoundPackage> }) {
             label="Status"
             dataType="string"
             sortBy="status"
+            css={css`
+              min-width: 120px;
+            `}
           />
           <TableHeader
             key="type"
