@@ -20,8 +20,8 @@ import {
 } from "utils/types";
 import { getProductPackages } from "database/updateDb";
 import { DataActionTypes, useDataContext } from "utils/DataProvider";
-import useSWR from "swr";
-import { fetcher } from "utils/fetcher";
+// import useSWR from "swr";
+// import { fetcher } from "utils/fetcher";
 
 export const mq = facepaint(
   Object.values(breakpoints).map((bp) => `@media (min-width: ${bp}px)`),
@@ -94,7 +94,7 @@ export default function Home({
   allProductData?: AllProductData;
 }) {
   const { dispatch } = useDataContext();
-  const { data, error } = useSWR("/api/products", fetcher);
+  // const { data, error } = useSWR("/api/products", fetcher);
 
   useEffect(() => {
     if (allProductData) {
@@ -102,8 +102,8 @@ export default function Home({
     }
   }, [allProductData]);
 
-  if (error) return <div>failed to load</div>;
-  if (!data) return <div>loading...</div>;
+  // if (error) return <div>failed to load</div>;
+  // if (!data) return <div>loading...</div>;
 
   return (
     <div>
