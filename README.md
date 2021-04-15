@@ -1,1 +1,1 @@
-Analytics Dashboard for Leafygreen-UI
+Analytics Dashboard for Leafygreen
