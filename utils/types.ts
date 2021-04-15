@@ -1,10 +1,10 @@
 const Product = {
   Atlas: "atlas",
-  Realm: "realm",
   Charts: "charts",
-  Evergreen: "evergreen",
-  Docs: "docs",
   Devhub: "devhub",
+  Docs: "docs",
+  Evergreen: "evergreen",
+  Realm: "realm",
   University: "university",
 } as const;
 
@@ -13,7 +13,7 @@ type Product = typeof Product[keyof typeof Product];
 export { Product };
 
 const Status = {
-  Missing: "missing",
+  NotFound: "notFound",
   Major: "major",
   Minor: "minor",
   Patch: "patch",
@@ -44,6 +44,13 @@ export interface TableRowData {
 export type AllProductData = Record<Product, Array<TableRowData>>;
 
 export type BadgeData = Record<
-  "major" | "minor" | "patch" | "missing" | "total",
+  "major" | "minor" | "patch" | "notFound" | "total",
   number
 > | null;
+
+export interface NotFoundPackage {
+  package: string;
+  status: "notFound";
+  type: Type;
+  version: string;
+}

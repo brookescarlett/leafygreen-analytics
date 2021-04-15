@@ -47,7 +47,7 @@ const cardContainer = css`
   row-gap: ${spacing[4]}px;
 
   ${mq({
-    gridTemplateColumns: ["12fr", "6fr 6fr", "6fr 6fr", "4fr 4fr 4fr"],
+    gridTemplateColumns: ["12fr", "6fr 6fr", "4fr 4fr 4fr", "4fr 4fr 4fr"],
   })}
 `;
 
@@ -59,7 +59,7 @@ function getBadgeData(product: Array<TableRowData>): BadgeData {
     [Status.Major]: 0,
     [Status.Minor]: 0,
     [Status.Patch]: 0,
-    [Status.Missing]: lgComponents - product.length,
+    [Status.NotFound]: lgComponents - product.length,
   };
 
   product.map(({ status }) => {

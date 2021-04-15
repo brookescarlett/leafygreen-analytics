@@ -16,7 +16,7 @@ const getVariant = (status: Status): Variant => {
     case Status.Patch:
       return "green";
 
-    case Status.Missing:
+    case Status.NotFound:
     default:
       return "lightgray";
   }
@@ -33,8 +33,12 @@ function HomeBadge({ status, number }: { status: Status; number: number }) {
 
   const variant = getVariant(status);
 
-  const pluralize =
-    status === Status.Missing ? "" : status === Status.Patch ? "es" : "s";
+  const renderedStatus =
+    status === Status.NotFound
+      ? "Not Found"
+      : status === Status.Patch
+      ? `${status}es`
+      : `${status}s`;
 
   return (
     <LGBadge
@@ -43,7 +47,7 @@ function HomeBadge({ status, number }: { status: Status; number: number }) {
       `}
       variant={variant}
     >
-      {`${number} ${status}${pluralize}`}
+      {`${number} ${renderedStatus}`}
     </LGBadge>
   );
 }
@@ -60,7 +64,7 @@ function TableBadge({ status }: { status: Status }) {
       `}
       variant={variant}
     >
-      {status}
+      {status === Status.NotFound ? "Not Found" : status}
     </LGBadge>
   );
 }

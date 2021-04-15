@@ -9,7 +9,7 @@ import { spacing } from "@leafygreen-ui/tokens";
 const headerContainer = css`
   margin-top: ${spacing[6]}px;
   margin-bottom: ${spacing[7]}px;
-  border-bottom: 1px solid ${uiColors.gray.light3};
+  border-bottom: 1px solid ${uiColors.gray.dark1};
 `;
 
 const titleStyle = css`

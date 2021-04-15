@@ -2,7 +2,7 @@
 /** @jsx jsx */
 import { useRouter } from "next/router";
 import { jsx, css } from "@emotion/react";
-import { Subtitle, Body } from "@leafygreen-ui/typography";
+import { H3, Body } from "@leafygreen-ui/typography";
 import LGCard from "@leafygreen-ui/card";
 import { spacing } from "@leafygreen-ui/tokens";
 import { uiColors } from "@leafygreen-ui/palette";
@@ -15,18 +15,21 @@ const headerContainer = css`
   align-items: center;
   padding-top: ${spacing[4]}px;
   padding-left: ${spacing[4]}px;
-  margin-bottom: 80px;
+  margin-bottom: 60px;
 `;
 
 const titleStyle = css`
   text-transform: capitalize;
   color: ${uiColors.gray.light3};
   font-weight: normal;
+  padding-top: 3px;
 `;
 
 const footerContainer = css`
   margin-top: ${spacing[3]}px;
   margin-left: ${spacing[4]}px;
+  margin-right: ${spacing[4]}px;
+  padding-bottom: 16px;
 `;
 
 interface CardProps {
@@ -59,15 +62,11 @@ function CardFooter({ badges }: { badges: CardProps["badges"] }) {
       >
         {badges.total} update{badges.total > 1 ? "s" : ""} available
       </Body>
-      <div
-        css={css`
-          margin-bottom: ${spacing[2]}px;
-        `}
-      >
+      <div>
         <HomeBadge status={Status.Major} number={badges.major} />
         <HomeBadge status={Status.Minor} number={badges.minor} />
         <HomeBadge status={Status.Patch} number={badges.patch} />
-        <HomeBadge status={Status.Missing} number={badges.missing} />
+        <HomeBadge status={Status.NotFound} number={badges.notFound} />
       </div>
     </div>
   );
@@ -78,19 +77,30 @@ function Card({ product, badges }: CardProps) {
   const ProductLogo = productLogoMap[product];
 
   return (
-    <LGCard darkMode onClick={() => router.push(`/${product}`)}>
+    <LGCard
+      contentStyle="clickable"
+      darkMode
+      onClick={() => router.push(`/${product}`)}
+      css={css`
+        height: 250px;
+
+        &:hover {
+          box-shadow: ;
+        }
+      `}
+    >
       <div css={headerContainer}>
         {ProductLogo && (
           <ProductLogo
             size={34}
             css={css`
-              margin-right: ${spacing[3]}px;
+              margin-right: ${spacing[2]}px;
             `}
           />
         )}
-        <Subtitle as={"h2"} css={titleStyle}>
-          {product}
-        </Subtitle>
+        <H3 as={"h2"} css={titleStyle}>
+          {product === Product.Devhub ? "DevHub" : product}
+        </H3>
       </div>
       <div
         css={css`

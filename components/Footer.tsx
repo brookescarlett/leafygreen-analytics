@@ -2,6 +2,7 @@
 /** @jsx jsx */
 import { jsx, css } from "@emotion/react";
 import { uiColors } from "@leafygreen-ui/palette";
+import { spacing } from "@leafygreen-ui/tokens";
 import { Body } from "@leafygreen-ui/typography";
 
 const containerStyle = css`
@@ -9,7 +10,7 @@ const containerStyle = css`
   justify-content: center;
   flex-grow: 1;
   margin-top: 96px;
-  padding-bottom: 24px;
+  padding-bottom: ${spacing[7]}px;
 `;
 
 function Footer() {

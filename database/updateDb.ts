@@ -1,5 +1,5 @@
 import { connectToDatabase } from "./mongodb";
-import { Product } from "utils/types";
+import { Product, Status } from "utils/types";
 
 interface ProductObject {
   _id: number;
@@ -103,6 +103,32 @@ function getType(pkg: string) {
   }
 
   return "component";
+}
+
+export async function getNotFoundPackages(product: Product) {
+  const { db } = await connectToDatabase();
+  const collection = db.collection("products");
+
+  const foundProduct = await collection.findOne({ product });
+  const leafygreen = await collection.findOne({ product: "design-systems" });
+  const productPackages = foundProduct.packages;
+
+  return Object.keys(leafygreen.packages)
+    .map((pkg: string) => {
+      const lgVersion = leafygreen.packages[pkg];
+
+      if (productPackages[pkg]) {
+        return null;
+      }
+
+      return {
+        package: pkg,
+        status: Status.NotFound,
+        type: getType(pkg),
+        version: lgVersion,
+      };
+    })
+    .filter((el) => el !== null);
 }
 
 export async function getProductPackages(product: Product) {
