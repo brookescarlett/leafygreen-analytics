@@ -1,1 +1,1 @@
-Next.js with Typescript and Tailwind.
+Analytics Dashboard for Leafygreen-UI
