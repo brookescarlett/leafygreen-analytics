@@ -139,7 +139,7 @@ export async function getProductPackages(product: Product) {
   const leafygreen = await collection.findOne({ product: "design-systems" });
   const productPackages = foundProduct.packages;
 
-  return Object.keys(productPackages).map((pkg: string) => {
+  const packages = Object.keys(productPackages).map((pkg: string) => {
     const lgVersion = leafygreen.packages[pkg];
     const { version, lastUpdated } = productPackages[pkg];
 
@@ -151,4 +151,6 @@ export async function getProductPackages(product: Product) {
       lastUpdated: new Date(lastUpdated).toLocaleDateString(),
     };
   });
+
+  return packages.sort((a, b) => a.status.localeCompare(b.status));
 }

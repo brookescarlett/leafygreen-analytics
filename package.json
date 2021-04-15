@@ -28,8 +28,7 @@
     "mongodb": "^3.6.6",
     "next": "10.0.8",
     "react": "17.0.1",
-    "react-dom": "^17.0.1",
-    "swr": "^0.5.2"
+    "react-dom": "^17.0.1"
   },
   "devDependencies": {
     "@emotion/babel-plugin": "^11.2.0",

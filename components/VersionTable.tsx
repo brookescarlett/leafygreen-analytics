@@ -3,8 +3,7 @@
 import { jsx, css } from "@emotion/react";
 import Icon from "@leafygreen-ui/icon";
 import { Table, HeaderRow, TableHeader, Row, Cell } from "@leafygreen-ui/table";
-import { uiColors } from "@leafygreen-ui/palette";
-import { Link } from "@leafygreen-ui/typography";
+import PackageLink from "components/PackageLink";
 import { TableBadge } from "components/Badge";
 import { Status, TableRowData } from "utils/types";
 
@@ -54,19 +53,7 @@ function VersionTable({ data }: { data: Array<TableRowData> }) {
       {({ datum }) => (
         <Row key={datum.package}>
           <Cell>
-            <Link
-              css={css`
-                color: #41c6ff;
-              `}
-              href={
-                datum.package &&
-                `https://www.mongodb.design/component/${
-                  datum.package.split("/")[1]
-                }/documentation/`
-              }
-            >
-              {datum.package}
-            </Link>
+            <PackageLink>{datum.package ?? ""}</PackageLink>
           </Cell>
           <Cell>{datum.lastUpdated}</Cell>
           <Cell>

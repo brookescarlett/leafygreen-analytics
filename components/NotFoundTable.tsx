@@ -1,8 +1,8 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import { jsx, css } from "@emotion/react";
+import { jsx } from "@emotion/react";
 import { Table, HeaderRow, TableHeader, Row, Cell } from "@leafygreen-ui/table";
-import { Link } from "@leafygreen-ui/typography";
+import PackageLink from "components/PackageLink";
 import { TableBadge } from "components/Badge";
 import { NotFoundPackage } from "utils/types";
 
@@ -46,19 +46,7 @@ function NotFoundTable({ data }: { data: Array<NotFoundPackage> }) {
       {({ datum }) => (
         <Row key={datum.package}>
           <Cell>
-            <Link
-              css={css`
-                color: #41c6ff;
-              `}
-              href={
-                datum.package &&
-                `https://www.mongodb.design/component/${
-                  datum.package.split("/")[1]
-                }/documentation/`
-              }
-            >
-              {datum.package}
-            </Link>
+            <PackageLink>{datum.package ?? ""}</PackageLink>
           </Cell>
           <Cell>
             <TableBadge status={datum.status} />
