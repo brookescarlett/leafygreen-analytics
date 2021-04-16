@@ -33,12 +33,7 @@ function HomeBadge({ status, number }: { status: Status; number: number }) {
 
   const variant = getVariant(status);
 
-  const renderedStatus =
-    status === Status.NotFound
-      ? "Not Found"
-      : status === Status.Patch
-      ? `${status}es`
-      : `${status}s`;
+  const renderedStatus = status === Status.NotFound ? "Not Found" : status;
 
   return (
     <LGBadge

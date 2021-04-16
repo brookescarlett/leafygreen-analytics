@@ -37,7 +37,7 @@ const packageButtonStyle = css`
   border: 1px solid ${uiColors.gray.dark3};
   box-shadow: unset;
   background-color: ${uiColors.gray.dark3};
-  margin-left: ${spacing[5]}px;
+  margin-left: ${spacing[2]}px;
   cursor: pointer;
 
   &:hover,

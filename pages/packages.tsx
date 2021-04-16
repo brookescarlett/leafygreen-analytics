@@ -18,7 +18,7 @@ const productButtonStyle = css`
   border: 1px solid ${uiColors.gray.dark3};
   box-shadow: unset;
   background-color: ${uiColors.gray.dark3};
-  margin-right: ${spacing[5]}px;
+  margin-right: ${spacing[2]}px;
   cursor: pointer;
 
   &:hover,
@@ -53,7 +53,6 @@ export default function Packages() {
             css={css`
               background: #21313c;
               border: none;
-              border-radius: 2px;
             `}
             width="100%"
             height="900"
