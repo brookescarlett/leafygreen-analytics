@@ -21,7 +21,19 @@ function Footer() {
           color: ${uiColors.white};
         `}
       >
-        Made with <span>💖</span> by Brooke & Rob during Skunkworks 2021
+        Made with <span>💖</span> by Brooke &{" "}
+        <a
+          href="https://www.audroue.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          css={css`
+            color: #41c6ff;
+            text-decoration: none;
+          `}
+        >
+          Rob
+        </a>{" "}
+        during Skunkworks 2021
       </Body>
     </div>
   );
