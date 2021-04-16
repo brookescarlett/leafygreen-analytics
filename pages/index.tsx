@@ -2,6 +2,7 @@
 /** @jsx jsx */
 import { GetStaticProps } from "next";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import { useEffect } from "react";
 import facepaint from "facepaint";
 import { jsx, css } from "@emotion/react";
@@ -33,12 +34,19 @@ const bodyContainer = css`
 
 const packageButtonStyle = css`
   color: ${uiColors.gray.light3};
-  border: none;
-  background-color: transparent;
+  border: 1px solid ${uiColors.gray.dark3};
+  box-shadow: unset;
+  background-color: ${uiColors.gray.dark3};
   margin-left: ${spacing[5]}px;
   cursor: pointer;
-`;
 
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: rgba(33, 49, 60, 0.08);
+    box-shadow: 0px 0px 0px 3px ${uiColors.gray.dark2};
+  }
+`;
 const cardContainer = css`
   display: grid;
   column-gap: ${spacing[4]}px;
@@ -92,6 +100,7 @@ export default function Home({
   allProductData?: AllProductData;
 }) {
   const { dispatch } = useDataContext();
+  const { push } = useRouter();
 
   useEffect(() => {
     if (allProductData) {
@@ -118,7 +127,9 @@ export default function Home({
             `}
           >
             <Button darkMode>Products</Button>
-            <button css={packageButtonStyle}>Packages</button>
+            <Button css={packageButtonStyle} onClick={() => push("/packages")}>
+              Packages
+            </Button>
           </div>
 
           <div css={cardContainer}>
