@@ -6,6 +6,7 @@ import Button from "@leafygreen-ui/button";
 import { uiColors } from "@leafygreen-ui/palette";
 import { spacing } from "@leafygreen-ui/tokens";
 import Header from "components/Header";
+import Footer from "components/Footer";
 
 const bodyContainer = css`
   display: grid;
@@ -55,10 +56,12 @@ export default function Packages() {
               border-radius: 2px;
             `}
             width="100%"
-            height="500"
+            height="900"
             src="https://charts.mongodb.com/charts-leafygreen-analytics-ycopl/embed/charts?id=4ae6ddeb-cde1-4ab9-b0fa-b094efa7c1c4&autoRefresh=86400&theme=dark"
           ></iframe>
         </div>
+
+        <Footer />
       </div>
 
       <div />
